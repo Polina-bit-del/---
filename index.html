@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шокот Максим | Портфолио</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#070A12;
+  --card:rgba(255,255,255,0.06);
+  --stroke:rgba(255,255,255,0.12);
+  --text:#EAF0FF;
+  --muted:#9AA4B2;
+  --a:#7C5CFF;
+  --b:#00D4FF;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(124,92,255,0.25), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(0,212,255,0.18), transparent 40%);
+}
+
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:18px 10%;
+  backdrop-filter:blur(12px);
+  background:rgba(0,0,0,0.35);
+  border-bottom:1px solid var(--stroke);
+  z-index:10;
+}
+
+nav a{
+  color:var(--text);
+  text-decoration:none;
+  margin-left:15px;
+  opacity:0.8;
+}
+
+nav a:hover{
+  opacity:1;
+  color:var(--b);
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:3.2rem;
+  background:linear-gradient(90deg,var(--a),var(--b));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+  color:var(--muted);
+  margin-top:10px;
+  max-width:600px;
+  line-height:1.6;
+}
+
+.btn{
+  margin-top:20px;
+  padding:12px 22px;
+  border-radius:12px;
+  border:1px solid var(--stroke);
+  background:var(--card);
+  color:var(--text);
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px rgba(0,212,255,0.3);
+}
+
+/* SECTIONS */
+section{
+  padding:80px 10%;
+}
+
+h2{
+  font-size:2rem;
+  margin-bottom:25px;
+}
+
+/* GRID / CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--stroke);
+  border-radius:18px;
+  padding:22px;
+  backdrop-filter:blur(12px);
+  transform:translateY(20px);
+  opacity:0;
+  transition:0.5s;
+}
+
+.card.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 25px rgba(124,92,255,0.25);
+}
+
+.card h3{
+  margin-bottom:10px;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.5;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:40px;
+  color:var(--muted);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<canvas id="particles"></canvas>
+
+<nav>
+  <b>Maxim Portfolio</b>
+  <div>
+    <a href="#about">Обо мне</a>
+    <a href="#skills">Навыки</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Шокот Максим 🚀</h1>
+  <p>
+    Добро пожаловать на мой сайт-портфолио.
+    Я люблю технологии, игры и создание проектов.
+  </p>
+  <button class="btn" onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'})">
+    Смотреть навыки
+  </button>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>Обо мне 👤</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>🎓 Учёба</h3>
+      <p>Школьник, изучаю технологии и программирование</p>
+    </div>
+
+    <div class="card">
+      <h3>🎮 Интересы</h3>
+      <p>Люблю игры, особенно на телефоне и ноутбуке</p>
+    </div>
+
+    <div class="card">
+      <h3>🌍 Мир</h3>
+      <p>Интересуюсь современными IT-технологиями</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Мои навыки и проекты 💡</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>🔵 Яндекс сервисы</h3>
+      <p>Работа с сервисами и цифровыми инструментами</p>
+    </div>
+
+    <div class="card">
+      <h3>🧩 Tinkercad</h3>
+      <p>3D моделирование и инженерные проекты</p>
+    </div>
+
+    <div class="card">
+      <h3>⛏️ Minecraft Education</h3>
+      <p>Образовательные игровые миры</p>
+    </div>
+
+    <div class="card">
+      <h3>🎙️ Навык для Алисы</h3>
+      <p>Создание голосового помощника и команд</p>
+    </div>
+
+    <div class="card">
+      <h3>📱 Thunkable</h3>
+      <p>Создание мобильных приложений</p>
+    </div>
+
+    <div class="card">
+      <h3>🤖 AI & Vibe Coding</h3>
+      <p>Искусственный интеллект и современные технологии</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 Шокот Максим — Portfolio
+</footer>
+
+<script>
+// ===== reveal animation =====
+const cards = document.querySelectorAll('.card');
+
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+    }
+  });
+},{threshold:0.2});
+
+cards.forEach(c=>obs.observe(c));
+
+// ===== particles =====
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+let dots = [];
+
+for(let i=0;i<70;i++){
+  dots.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    dx:(Math.random()-0.5)*0.6,
+    dy:(Math.random()-0.5)*0.6,
+    r:Math.random()*2
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  dots.forEach(d=>{
+    d.x+=d.dx;
+    d.y+=d.dy;
+
+    if(d.x<0||d.x>canvas.width)d.dx*=-1;
+    if(d.y<0||d.y>canvas.height)d.dy*=-1;
+
+    ctx.beginPath();
+    ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(0,212,255,0.5)";
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
